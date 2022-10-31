@@ -1,16 +1,9 @@
 package mobil.baz.tourism;
-import android.app.Person;
-
-import org.jetbrains.annotations.NotNull;
+import android.widget.EditText;
 
 import androidx.room.ColumnInfo;
-import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 
 @Entity

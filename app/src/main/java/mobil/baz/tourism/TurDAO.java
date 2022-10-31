@@ -18,11 +18,11 @@ public interface TurDAO {
     @Insert
     void AddTur(Tur tur);
 
-    @Update
-    void UpdateTur(Tur tur);
-
     @Delete
     void DeleteTur(Tur tur);
+
+    @Update
+    void UpdateTur(Tur tur);
 
     @Query("SELECT * FROM tur")
     LiveData<List<Tur>> getAllTurs();
