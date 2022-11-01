@@ -47,25 +47,6 @@
         app:layout_constraintTop_toBottomOf="@+id/Recepttur" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/addButton2"
-        android:layout_width="309dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="408dp"
-        android:layout_marginEnd="42dp"
-        android:background="@drawable/custom_button"
-        android:text="delete last tur"
-        android:textColor="#FFFFFF"
-        android:textColorHighlight="#00FFFFFF"
-        android:textColorHint="#000000"
-        android:textColorLink="#00FFFFFF"
-        app:backgroundTint="@android:color/holo_orange_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Recepttur" />
-
-    <com.google.android.material.button.MaterialButton
         android:id="@+id/addButton"
         android:layout_width="326dp"
         android:layout_height="49dp"
@@ -75,11 +56,11 @@
         android:background="@drawable/custom_button"
         android:onClick="onMyButtonClick"
         android:text="add tur"
-        android:textColor="#FFFFFF"
+        android:textColor="#232323"
         android:textColorHighlight="#00FFFFFF"
         android:textColorHint="#000000"
         android:textColorLink="#00FFFFFF"
-        app:backgroundTint="@android:color/holo_orange_dark"
+        app:backgroundTint="#96E4CC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
