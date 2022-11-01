@@ -31,10 +31,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Name" />
+        app:layout_constraintTop_toBottomOf="@+id/cityENG_txt" />
 
     <EditText
-        android:id="@+id/Name"
+        android:id="@+id/cityENG_txt"
         android:layout_width="305dp"
         android:layout_height="45dp"
         android:layout_marginStart="29dp"

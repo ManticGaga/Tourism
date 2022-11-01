@@ -22,10 +22,7 @@ public class TurViewmodel extends AndroidViewModel {
 
     public void insert(Tur tur){ repozitory.insert(tur); }
 
-
-    public void delete(Tur tur){
-        repozitory.delete(tur);
-    }
+    public void deleteAll() {repozitory.deleteAll();}
 
     public LiveData<List<Tur>> getAllTurs(){
         return turList;
@@ -34,4 +31,10 @@ public class TurViewmodel extends AndroidViewModel {
     public void update(Tur tur) {
         repozitory.update(tur);
     }
+
+    public void delete(Tur tur){
+        repozitory.delete(tur);
+    }
+
+
 }

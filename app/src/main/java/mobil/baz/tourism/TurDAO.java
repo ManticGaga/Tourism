@@ -20,6 +20,8 @@ public interface TurDAO {
 
     @Delete
     void DeleteTur(Tur tur);
+    @Query("DELETE FROM Tur")
+    void deleteAll();
 
     @Update
     void UpdateTur(Tur tur);

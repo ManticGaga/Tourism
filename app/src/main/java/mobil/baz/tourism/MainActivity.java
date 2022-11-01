@@ -27,8 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     EditText Turname;
-    EditText Recepttur;
-    EditText Name;
+    EditText Travel;
+
+
+
     TurViewmodel model;
 
     @Override
@@ -45,32 +47,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+               R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-
-
-
-        model.insert(new Tur("kate", "mozarella", "cheese,banana"));
-
-
-
-        model.getAllTurs().observe(this, turList -> {
-
-            // if(turList == null){
-            //   return;
-            //}
-
-            for (Tur list : turList) {
-                Log.d("turs", list.name + " " + list.tur_name + " " + list.recept);
-
-            }
-        });
 
 
 

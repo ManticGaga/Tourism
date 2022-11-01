@@ -48,18 +48,10 @@ public class TurAdapter extends RecyclerView.Adapter<TurAdapter.MyViewHolder>{
             super(binding.getRoot());
             this.binding = binding;
 
-
-            itemView.findViewById(R.id.buttony).setOnClickListener(view -> {
-
-                Toast.makeText(itemView.getContext(), "Clicked Laugh Vote", Toast.LENGTH_SHORT).show();
-
-            });
-
         }
         public void bindView(Tur tur){
-            binding.nameTxt.setText(tur.getName());
-            binding.turTxt.setText(tur.getTur_name());
-            binding.receptTxt.setText(tur.getRecept());
+              binding.cityRUTxt.setText(tur.getRecept());
+              binding.cityENGTxt.setText(tur.getName());
         }
     }
 }

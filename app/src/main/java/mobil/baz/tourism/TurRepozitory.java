@@ -30,6 +30,8 @@ public class TurRepozitory  {
         new DeleteTursAsyncTask(mTurDao).execute(tur);
     }
 
+    public void deleteAll()  {  new deleteAllWordsAsyncTask(mTurDao).execute();}
+
     public LiveData<List<Tur>> getAllTurs(){
         return mAllTurs;
     }
@@ -71,5 +73,20 @@ public class TurRepozitory  {
             turDAO.DeleteTur(turs[0]);
             return null;
         }
+    }
+
+    private static class deleteAllWordsAsyncTask extends AsyncTask<Void, Void, Void> {
+        private TurDAO mAsyncTaskDao;
+
+        deleteAllWordsAsyncTask(TurDAO dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            mAsyncTaskDao.deleteAll();
+            return null;
+        }
+
     }
 }
