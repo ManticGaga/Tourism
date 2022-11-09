@@ -47,6 +47,13 @@ public class TurAdapter extends RecyclerView.Adapter<TurAdapter.MyViewHolder>{
         public MyViewHolder(ItemListBinding binding){
             super(binding.getRoot());
             this.binding = binding;
+            itemView.findViewById(R.id.cldr).setOnClickListener(view -> {
+                Toast.makeText(itemView.getContext(), "Notification set.", Toast.LENGTH_SHORT).show();
+
+
+
+            });
+
 
         }
         public void bindView(Tur tur){
