@@ -1,5 +1,7 @@
 package mobil.baz.tourism;
 
+import android.content.Intent;
+import android.provider.AlarmClock;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -7,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -49,7 +52,9 @@ public class TurAdapter extends RecyclerView.Adapter<TurAdapter.MyViewHolder>{
             this.binding = binding;
             itemView.findViewById(R.id.cldr).setOnClickListener(view -> {
                 Toast.makeText(itemView.getContext(), "Notification set.", Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(Calendar.ACTION_SET_DATE);
+                intent.putExtra(Calendar.EXTRA_DATE,0);
+                view.getContext().startActivity(intent);
 
 
             });

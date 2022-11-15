@@ -1,6 +1,7 @@
 package mobil.baz.tourism;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
@@ -8,85 +9,18 @@ import androidx.lifecycle.LiveData;
 import java.util.List;
 
 public class TurRepozitory  {
+    private TurDAO turDAO;
+    private LiveData<List<Tur>> allTur;
+    private Context context;
 
-    private TurDAO mTurDao;
-    private LiveData<List<Tur>> mAllTurs ;
 
-    public TurRepozitory (Application application){
-         TurDatabase db =  TurDatabase.getDatabase(application);
-        mTurDao = db.turDAO();
-        mAllTurs = mTurDao.getAllTursLive();
+    public TurRepozitory(Context context){
+        this.context = context;
+        TurDatabase appDatabase = TurDatabase.getInstance(context);
+        turDAO = appDatabase.turDAO();
+        allTur = TurDAO.getAll();
     }
 
-    public void insert(Tur tur){
-        new InsertTursAsyncTask(mTurDao).execute(tur);
-    }
+    public LiveData<List<Tur>> getAllEmployee(){return allTur;}
 
-    public void update(Tur tur){
-        new UpdateTursAsyncTask(mTurDao).execute(tur);
-    }
-
-    public void delete(Tur tur){
-        new DeleteTursAsyncTask(mTurDao).execute(tur);
-    }
-
-    public void deleteAll()  {  new deleteAllWordsAsyncTask(mTurDao).execute();}
-
-    public LiveData<List<Tur>> getAllTurs(){
-        return mAllTurs;
-    }
-
-    private static class InsertTursAsyncTask extends AsyncTask< Tur, Void, Void>{
-        private TurDAO turDAO;
-        private InsertTursAsyncTask(TurDAO turDAO){
-            this.turDAO = turDAO;
-        }
-
-        @Override
-        protected Void doInBackground( Tur... turs) {
-            turDAO.AddTur(turs[0]);
-            return null;
-        }
-    }
-
-    private static class UpdateTursAsyncTask extends AsyncTask< Tur, Void, Void>{
-        private TurDAO turDAO;
-        private UpdateTursAsyncTask(TurDAO turDAO){
-            this.turDAO = turDAO;
-        }
-
-        @Override
-        protected Void doInBackground( Tur... turs) {
-            turDAO.UpdateTur(turs[0]);
-            return null;
-        }
-    }
-
-    private static class DeleteTursAsyncTask extends AsyncTask<Tur, Void, Void>{
-        private TurDAO turDAO;
-        private DeleteTursAsyncTask(TurDAO turDAO){
-            this.turDAO = turDAO;
-        }
-
-        @Override
-        protected Void doInBackground(Tur... turs) {
-            turDAO.DeleteTur(turs[0]);
-            return null;
-        }
-    }
-
-    private static class deleteAllWordsAsyncTask extends AsyncTask<Void, Void, Void> {
-        private TurDAO mAsyncTaskDao;
-
-        deleteAllWordsAsyncTask(TurDAO dao) {
-            mAsyncTaskDao = dao;
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            mAsyncTaskDao.deleteAll();
-            return null;
-        }
-
-    }
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -15,25 +16,24 @@ import java.util.List;
 @Dao
 public interface TurDAO {
 
-    @Insert
-    void AddTur(Tur tur);
+    @Query("SELECT * FROM tur")
+    LiveData<List<Tur>> getAll();
 
-    @Delete
-    void DeleteTur(Tur tur);
-    @Query("DELETE FROM Tur")
-    void deleteAll();
+    @Query("SELECT * FROM tur WHERE id = :id")
+    Tur getById(long id);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(Tur tur);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertAll(Tur[] turs);
 
     @Update
-    void UpdateTur(Tur tur);
+    void update(Tur tur);
 
-    @Query("SELECT * FROM tur")
-    LiveData<List<Tur>> getAllTurs();
+    @Delete
+    void delete(Tur tur);
 
-    @Query("select * from tur where name ==:name ")
-    public Tur  getTur(String name);
-
-    @Query("select * from tur")
-    public LiveData<List<Tur>> getAllTursLive();
 
 
 }

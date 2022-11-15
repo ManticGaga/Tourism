@@ -14,28 +14,14 @@ public class Tur {
     @ColumnInfo(name = "name" )
     public String name;
 
-    @ColumnInfo(name = "tur_name" )
-    public String tur_name;
-
     @ColumnInfo(name = "recept")
     public String recept;
 
-
-
-    public Tur(String name, String tur_name, String recept){
-        this.tur_name = tur_name;
+    public Tur(String name, String recept){
         this.name = name;
         this.recept = recept;
 
     }
-    public String getTur_name() {
-        return tur_name;
-    }
-
-    public void setTur_name(String tur_name) {
-        this.tur_name = tur_name;
-    }
-
     public String getName() {
         return name;
     }
