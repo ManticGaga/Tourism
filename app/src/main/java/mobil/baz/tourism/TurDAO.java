@@ -8,9 +8,6 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import androidx.lifecycle.LiveData;
-
-
 import java.util.List;
 
 @Dao
@@ -19,7 +16,7 @@ public interface TurDAO {
     @Query("SELECT * FROM tur")
     LiveData<List<Tur>> getAll();
 
-    @Query("SELECT * FROM tur WHERE id = :id")
+    @Query("SELECT * FROM tur WHERE uid = :id")
     Tur getById(long id);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

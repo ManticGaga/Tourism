@@ -1,8 +1,6 @@
 package mobil.baz.tourism;
 
-import android.app.Application;
 import android.content.Context;
-import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
@@ -18,9 +16,9 @@ public class TurRepozitory  {
         this.context = context;
         TurDatabase appDatabase = TurDatabase.getInstance(context);
         turDAO = appDatabase.turDAO();
-        allTur = TurDAO.getAll();
+        allTur = turDAO.getAll();
     }
 
-    public LiveData<List<Tur>> getAllEmployee(){return allTur;}
+    public LiveData<List<Tur>> getAllTur(){return allTur;}
 
 }
