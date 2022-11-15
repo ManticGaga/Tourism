@@ -8,12 +8,9 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
-import androidx.sqlite.db.SupportSQLiteStatement;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import mobil.baz.tourism.TurDAO;
 
 
 @Database(entities = { Tur.class},version = 1, exportSchema = false)
@@ -1523,7 +1520,6 @@ public abstract class TurDatabase extends RoomDatabase {
     };
 
     private static volatile TurDatabase INSTANCE;
-
     public static TurDatabase getInstance(final Context context) {
         if (INSTANCE == null) {
             synchronized (TurDatabase.class) {
@@ -1535,26 +1531,21 @@ public abstract class TurDatabase extends RoomDatabase {
                                 public void onCreate(@NonNull SupportSQLiteDatabase db) {
                                     super.onCreate(db);
                                     Log.d("DataValue", "preInitData");
-
                                     TurDatabase.databaseWriteExecutor.execute(() -> {
                                         INSTANCE.turDAO().insertAll(INSTANCE.turs);
-
-
                                         Log.d("DataValue", "initData");
                                     });
-
-
-                                }
-                            });
+                               }
+                            })
+                    .build();
                 }
             }
 
-            return INSTANCE;
-
         }
 
-
+        return INSTANCE;
     }
 }
+
 
 

@@ -1,36 +1,43 @@
 package mobil.baz.tourism;
 
-import android.content.Intent;
-import android.provider.AlarmClock;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Calendar;
 import java.util.List;
-import java.util.ArrayList;
 
 import mobil.baz.tourism.databinding.ItemListBinding;
+import mobil.baz.tourism.ui.dashboard.DashboardFragment;
 
 
-public class TurAdapter extends RecyclerView.Adapter<TurAdapter.MyViewHolder>{
+public class TurAdapter extends RecyclerView.Adapter<TurViewHolder>{
 
-    private List<Tur> mTurs =  new ArrayList<>();
+    private List<String> mTurs;
+    private final DashboardFragment dashboardFragment;
+
+    public TurAdapter(DashboardFragment dashboardFragment, List<String> rooms){
+        this.dashboardFragment = dashboardFragment;
+        this.mTurs = mTurs;
+    }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TurViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemListBinding binding = ItemListBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new MyViewHolder(binding);
+        return new TurViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Tur tur = mTurs.get(position);
-        holder.bindView(tur);
+    public void onBindViewHolder(@NonNull TurViewHolder holder, int position) {
+        holder.getButton().setText(mTurs.get(position));
+        holder.getButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
     }
 
     @Override
@@ -38,33 +45,5 @@ public class TurAdapter extends RecyclerView.Adapter<TurAdapter.MyViewHolder>{
         return mTurs.size();
     }
 
-    public void setTur(List<Tur> tur){
-        this.mTurs = tur;
-        notifyDataSetChanged();
-    }
-
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
-
-        ItemListBinding binding;
-
-        public MyViewHolder(ItemListBinding binding){
-            super(binding.getRoot());
-            this.binding = binding;
-            itemView.findViewById(R.id.cldr).setOnClickListener(view -> {
-                Toast.makeText(itemView.getContext(), "Notification set.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Calendar.ACTION_SET_DATE);
-                intent.putExtra(Calendar.EXTRA_DATE,0);
-                view.getContext().startActivity(intent);
-
-
-            });
-
-
-        }
-        public void bindView(Tur tur){
-              binding.cityRUTxt.setText(tur.getRecept());
-              binding.cityENGTxt.setText(tur.getName());
-        }
-    }
 }
 
