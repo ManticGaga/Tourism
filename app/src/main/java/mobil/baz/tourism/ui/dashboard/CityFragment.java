@@ -21,13 +21,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.Calendar;
 
-import mobil.baz.tourism.Tur;
+import mobil.baz.tourism.model.Tur;
 import mobil.baz.tourism.TurAdapter;
-import mobil.baz.tourism.TurViewmodel;
+import mobil.baz.tourism.View.TurViewmodel;
 import mobil.baz.tourism.databinding.FragmentDashboardBinding;
 
-public class DashboardFragment extends Fragment {
-
+public class CityFragment extends Fragment {
     private TurViewmodel model;
     FragmentDashboardBinding binding;
     Button btnAddEvent;
@@ -36,11 +35,8 @@ public class DashboardFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                          Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
-
         btnAddEvent = binding.cldr;
-
         btnAddEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +45,6 @@ public class DashboardFragment extends Fragment {
         });
         View v = binding.getRoot();
         binding.tutorialRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.tutorialRecycler.setHasFixedSize(true);
         return v;
     }
 
@@ -57,6 +52,7 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         model = new ViewModelProvider(this).get(TurViewmodel.class);
         model.getAllTurs().observe(getViewLifecycleOwner(), turs -> {
             binding.tutorialRecycler.setAdapter(
@@ -73,8 +69,8 @@ public class DashboardFragment extends Fragment {
         Calendar cal = Calendar.getInstance();
         long startTime = cal.getTimeInMillis() + 24*60*60*1000;
         long endTime = startTime + 60 * 180 * 1000;
-        calendarIntent.putExtra(CalendarContract.Events.TITLE, "Мероприятие в AntiCAFE");
-        calendarIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, "AntiCAFE, Moscow");
+        calendarIntent.putExtra(CalendarContract.Events.TITLE, "У вас назначена поездка");
+        calendarIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, "Россия");
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTime);
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime);
 

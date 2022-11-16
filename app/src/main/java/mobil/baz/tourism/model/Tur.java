@@ -1,5 +1,4 @@
-package mobil.baz.tourism;
-import android.widget.EditText;
+package mobil.baz.tourism.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

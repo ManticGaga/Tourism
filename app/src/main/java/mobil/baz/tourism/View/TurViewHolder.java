@@ -1,4 +1,4 @@
-package mobil.baz.tourism;
+package mobil.baz.tourism.View;
 
 import android.widget.Button;
 
@@ -11,7 +11,6 @@ public class TurViewHolder extends RecyclerView.ViewHolder {
 
     public TurViewHolder(ItemListBinding ceb) {
         super(ceb.getRoot());
-        Button = ceb.cldr;
     }
 
     public Button getButton(){

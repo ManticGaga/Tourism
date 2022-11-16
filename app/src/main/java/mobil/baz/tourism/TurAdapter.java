@@ -9,16 +9,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import mobil.baz.tourism.View.TurViewHolder;
 import mobil.baz.tourism.databinding.ItemListBinding;
-import mobil.baz.tourism.ui.dashboard.DashboardFragment;
+import mobil.baz.tourism.ui.dashboard.CityFragment;
 
 
 public class TurAdapter extends RecyclerView.Adapter<TurViewHolder>{
 
     private List<String> mTurs;
-    private final DashboardFragment dashboardFragment;
+    private final CityFragment dashboardFragment;
 
-    public TurAdapter(DashboardFragment dashboardFragment, List<String> rooms){
+    public TurAdapter(CityFragment dashboardFragment, List<String> mTurs){
         this.dashboardFragment = dashboardFragment;
         this.mTurs = mTurs;
     }

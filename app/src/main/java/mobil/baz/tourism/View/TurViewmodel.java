@@ -1,4 +1,4 @@
-package mobil.baz.tourism;
+package mobil.baz.tourism.View;
 
 import android.app.Application;
 
@@ -7,6 +7,10 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
+
+import mobil.baz.tourism.ServiceLocator;
+import mobil.baz.tourism.TurRepozitory;
+import mobil.baz.tourism.model.Tur;
 
 public class TurViewmodel extends AndroidViewModel {
 

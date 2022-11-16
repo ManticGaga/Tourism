@@ -1,4 +1,4 @@
-package mobil.baz.tourism;
+package mobil.baz.tourism.database;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,6 +12,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import mobil.baz.tourism.model.Tur;
+
 
 @Database(entities = { Tur.class},version = 1, exportSchema = false)
 public abstract class TurDatabase extends RoomDatabase {
@@ -21,6 +23,7 @@ public abstract class TurDatabase extends RoomDatabase {
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public abstract TurDAO turDAO();
+
 
     Tur[] turs = {
             new Tur("Abatskoye", "Абатское"),

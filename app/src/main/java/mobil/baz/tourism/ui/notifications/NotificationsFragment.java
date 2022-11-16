@@ -6,17 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import org.jetbrains.annotations.NotNull;
 
 import mobil.baz.tourism.R;
-import mobil.baz.tourism.TurViewmodel;
+import mobil.baz.tourism.View.TurViewmodel;
 import mobil.baz.tourism.databinding.FragmentNotificationsBinding;
 
 public class NotificationsFragment extends Fragment {
